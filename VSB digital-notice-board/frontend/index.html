@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172554">
+  <meta name="description" content="A simple digital notice board for campus announcements.">
+  <title>CampusBoard — Digital Notice Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="CampusBoard home"><span class="brand-mark">C</span><span>Campus<span class="brand-light">Board</span></span></a>
+      <div class="nav-links"><a href="#notices">Notices</a><a href="#about">About</a></div>
+      <a class="nav-cta" href="#publish">+ Publish notice</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> YOUR CAMPUS, IN THE LOOP</div>
+          <h1>Everything happening<br>on <span>your campus.</span></h1>
+          <p class="hero-text">One simple place for college announcements, events, deadlines, and opportunities. Stay informed, never miss a thing.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#notices">Explore notices <span aria-hidden="true">↗</span></a><a class="button button-ghost" href="#publish">Post an announcement</a></div>
+          <div class="hero-proof"><div class="avatar-stack"><span>📚</span><span>🎓</span><span>📣</span></div><p><strong>One board.</strong> The whole campus.</p></div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of campus announcements">
+          <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div>
+          <div class="notice-illustration">
+            <div class="ill-top"><span class="ill-logo">C.</span><span class="ill-dots">•••</span></div>
+            <div class="ill-label">CAMPUS UPDATE</div>
+            <div class="ill-title">Ideas meet<br>opportunity.</div>
+            <div class="ill-line"></div><div class="ill-line short"></div>
+            <div class="ill-event"><span class="event-icon">✦</span><span><b>Innovation Day</b><small>Friday · Main Auditorium</small></span><span class="event-arrow">↗</span></div>
+          </div>
+          <div class="float-tag tag-top"><span class="tag-icon tag-purple">✦</span><span><b>New event</b><small>Just posted</small></span></div>
+          <div class="float-tag tag-bottom"><span class="tag-icon tag-orange">⌁</span><span><b>Stay updated</b><small>All in one place</small></span></div>
+          <div class="spark spark-one">✳</div><div class="spark spark-two">✦</div>
+        </div>
+      </div>
+      <div class="container hero-bottom"><div><strong>01</strong><span>Find what matters</span></div><div><strong>02</strong><span>Share campus news</span></div><div><strong>03</strong><span>Keep everyone in sync</span></div></div>
+    </section>
+
+    <section class="notices-section section-pad" id="notices">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="eyebrow eyebrow-dark">THE NOTICE WALL</div><h2>What’s happening <span>around you?</span></h2><p class="section-subtitle">Browse the latest updates from your campus community.</p></div>
+          <div class="notice-count"><span class="count-dot"></span><span id="notice-count">Loading notices…</span></div>
+        </div>
+        <div class="toolbar">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input type="search" id="search-input" placeholder="Search notices, events, deadlines…" aria-label="Search notices"><kbd>⌘ K</kbd></label>
+          <div class="filter-wrap"><label class="sr-only" for="category-filter">Filter by category</label><select id="category-filter"><option value="all">All categories</option><option value="Events">Events</option><option value="Academic">Academic</option><option value="Examination">Examination</option><option value="Clubs">Clubs</option><option value="General">General</option></select><label class="sr-only" for="sort-filter">Sort notices</label><select id="sort-filter"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></div>
+        </div>
+        <div id="notice-status" class="status-message" role="status" aria-live="polite"></div>
+        <div id="notice-grid" class="notice-grid" aria-live="polite"></div>
+        <div id="empty-state" class="empty-state" hidden><div class="empty-icon">⌕</div><h3>No notices found</h3><p>Try a different search or category, or publish the first notice.</p><button class="button button-dark" id="clear-filters">Clear filters</button></div>
+      </div>
+    </section>
+
+    <section class="publish-section section-pad" id="publish">
+      <div class="container publish-grid">
+        <div class="publish-copy"><div class="eyebrow">SHARE WITH YOUR CAMPUS</div><h2>Have news to<br>put <span>out there?</span></h2><p>From club meetups to exam updates, help your campus stay connected. Add a notice in just a minute.</p><div class="publish-note"><span class="note-icon">✎</span><span><b>Clear. Helpful. Campus-ready.</b><small>Keep announcements useful and respectful.</small></span></div></div>
+        <form class="notice-form" id="notice-form" novalidate>
+          <div class="form-heading"><div><h3>Publish a notice</h3><p>Fill in the details below.</p></div><span class="form-step">NEW POST</span></div>
+          <label for="title">Notice title <span>*</span></label><input id="title" name="title" maxlength="120" required placeholder="e.g. Annual cultural fest registrations">
+          <div class="form-row"><div><label for="category">Category <span>*</span></label><select id="category" name="category" required><option value="">Choose category</option><option>Events</option><option>Academic</option><option>Examination</option><option>Clubs</option><option>General</option></select></div><div><label for="author">Posted by <span>*</span></label><input id="author" name="author" maxlength="80" required placeholder="e.g. Student Council"></div></div>
+          <label for="description">Description <span>*</span></label><textarea id="description" name="description" rows="4" maxlength="2000" required placeholder="Share the important details, date, venue, or instructions…"></textarea>
+          <div class="form-row"><div><label for="event-date">Event / due date</label><input id="event-date" name="event_date" type="date"></div><div><label for="contact">Contact (optional)</label><input id="contact" name="contact" maxlength="120" placeholder="Email or contact details"></div></div>
+          <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+          <button class="button button-primary submit-button" type="submit" id="submit-button"><span>Publish notice</span><span aria-hidden="true">↗</span></button>
+          <p class="form-footnote"><span>ⓘ</span> Notices are visible to everyone using this board.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="about-section section-pad" id="about"><div class="container about-inner"><div class="about-icon">✳</div><div><div class="eyebrow eyebrow-dark">MADE FOR CAMPUS LIFE</div><h2>Less searching. <span>More doing.</span></h2><p>CampusBoard brings announcements into one organized space, so students can focus on what’s next instead of wondering what they missed.</p></div><a class="button button-dark" href="#notices">Back to notices ↑</a></div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><a class="brand footer-brand" href="#"><span class="brand-mark">C</span><span>Campus<span class="brand-light">Board</span></span></a><p>Built for a more connected campus.</p><span>© <span id="year"></span> CampusBoard</span></div></footer>
+  <dialog id="edit-dialog" class="edit-dialog"><form id="edit-form" novalidate><div class="form-heading"><div><h3>Edit notice</h3><p>Update this campus announcement.</p></div><button type="button" class="dialog-close" id="close-edit" aria-label="Close edit dialog">×</button></div><input type="hidden" id="edit-id"><label for="edit-title">Notice title <span>*</span></label><input id="edit-title" maxlength="120" required><div class="form-row"><div><label for="edit-category">Category <span>*</span></label><select id="edit-category" required><option>Events</option><option>Academic</option><option>Examination</option><option>Clubs</option><option>General</option></select></div><div><label for="edit-author">Posted by <span>*</span></label><input id="edit-author" maxlength="80" required></div></div><label for="edit-description">Description <span>*</span></label><textarea id="edit-description" rows="4" maxlength="2000" required></textarea><div class="form-row"><div><label for="edit-date">Event / due date</label><input id="edit-date" type="date"></div><div><label for="edit-contact">Contact (optional)</label><input id="edit-contact" maxlength="120"></div></div><div id="edit-message" class="form-message" role="status"></div><button class="button button-primary submit-button" id="save-edit" type="submit">Save changes ↗</button></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
